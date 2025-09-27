@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- MathJax for beautiful math rendering -->
@@ -24,25 +24,23 @@
     </script>
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <style>
-        /* APPLE-INSPIRED PREMIUM DESIGN PALETTE */
+        /* ROYAL & PREMIUM DESIGN PALETTE */
         :root {
-            --bg-gradient: linear-gradient(120deg, #E6E9F0, #EEF1F5); /* Platinum Glow */
-            --footer-gradient: linear-gradient(to right, #232526, #414345); /* Mystic Noir */
-            --accent-gradient: linear-gradient(to right, #F7971E, #FFD200); /* Luxury Gold Accent */
-            --highlight-gradient: linear-gradient(to right, #A1C4FD, #C2E9FB); /* Serene Blue Mist */
-            
-            --card-bg: rgba(255, 255, 255, 0.65);
-            --heading-text: #232526;
-            --body-text: #414345;
-            --border-color: rgba(0, 0, 0, 0.07);
-
+            --bg-color: #FAF7F2;
+            --card-color: #FFFFFF;
+            --primary-accent: #D4AF37;
+            --secondary-accent: #B88917;
+            --heading-text: #0D1B2A;
+            --body-text: #3E4C59;
+            --border-color: #E8E3DC;
+            --optional-accent: #5A2A27;
             --success-color: #28a745;
             --skip-color: #dc3545;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-gradient);
+            font-family: 'Poppins', 'Inter', sans-serif;
+            background: var(--bg-color);
             color: var(--body-text);
         }
 
@@ -56,137 +54,133 @@
         }
 
         .card {
-            background: var(--card-bg);
+            background: var(--card-color);
             border: 1px solid var(--border-color);
-            border-radius: 1.5rem;
-            box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.1);
-            padding: 3.5rem;
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px);
-            animation: fadeIn 0.6s ease-out;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px -15px rgba(13, 27, 42, 0.1);
+            padding: 3rem;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .btn {
-            padding: 0.8rem 1.75rem;
-            border-radius: 0.75rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 0.5rem;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             text-align: center;
             cursor: pointer;
-            transition: all 0.25s ease-out;
+            transition: all 0.2s ease-in-out;
             letter-spacing: 0.5px;
-            border: none;
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
-            color: #0D1B2A;
-            box-shadow: 0 5px 20px -5px rgba(247, 151, 30, 0.4);
+            background-color: var(--primary-accent);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
             transform: translateY(0);
         }
 
         .btn-primary:hover {
-            box-shadow: 0 0 25px rgba(255, 210, 0, 0.6);
-            transform: translateY(-3px) scale(1.03);
+            background-color: var(--secondary-accent);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px);
         }
 
          .btn-primary:disabled {
-            background: #EAEAEA;
-            color: #A0A0A0;
+            background: #e4d5a1;
+            color: #fff;
             cursor: not-allowed;
             transform: translateY(0);
             box-shadow: none;
         }
 
         .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: var(--card-color);
             color: var(--heading-text);
             border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background-color: #FFFFFF;
-            border-color: var(--heading-text);
+            background-color: #FAF7F2;
+            border-color: #D4AF37;
         }
 
         .input-field {
             width: 100%;
-            padding: 0.85rem 1.15rem;
+            padding: 0.75rem 1rem;
             border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
+            border-radius: 0.5rem;
             transition: all 0.2s ease-in-out;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: var(--card-color);
             color: var(--body-text);
-            font-size: 1rem;
         }
 
         .input-field:focus {
             outline: none;
-            border-color: #F7971E;
-            box-shadow: 0 0 0 4px rgba(247, 151, 30, 0.15);
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
         }
 
         .tab-btn-container {
-             background-color: #E6E9F0;
-             padding: 0.35rem;
-             border-radius: 0.75rem;
+             background-color: #E8E3DC;
+             padding: 0.25rem;
         }
 
         .tab-btn {
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             cursor: pointer;
             font-weight: 500;
             color: var(--body-text);
-            border: none;
-            background: transparent;
+            border: 2px solid transparent;
         }
 
         .tab-btn.active {
-            background: var(--accent-gradient);
-            color: #0D1B2A;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background-color: var(--primary-accent);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .option {
             transition: all 0.2s ease-in-out;
             border: 1px solid var(--border-color);
-            background-color: #FFFFFF;
+            background-color: var(--card-color);
             border-radius: 0.75rem;
         }
         
         .option:hover {
-            border-color: #FFD200;
+            border-color: var(--primary-accent);
             transform: translateY(-2px);
         }
 
         .option.selected {
             background-color: #fffaf0;
-            border-color: #F7971E;
+            border-color: var(--primary-accent);
             transform: scale(1.02);
-            box-shadow: 0 4px 20px -5px rgba(247, 151, 30, 0.3);
+            box-shadow: 0 4px 15px -2px rgba(212, 175, 55, 0.2);
         }
 
         .result-box {
-            background: #FFFFFF;
+            background: var(--card-color);
             border: 1px solid var(--border-color);
-            border-radius: 1rem;
+            border-radius: 0.75rem;
         }
 
         .goal-analysis-box {
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             padding: 1.5rem;
         }
 
         .loader {
             width: 24px;
             height: 24px;
-            border: 3px solid rgba(0, 0, 0, 0.6);
+            border: 3px solid rgba(255, 255, 255, 0.8);
             border-bottom-color: transparent;
             border-radius: 50%;
             display: inline-block;
@@ -199,8 +193,14 @@
             100% { transform: rotate(360deg); }
         }
 
-        #pdfFileName.font-semibold {
+        label {
             color: var(--heading-text);
+        }
+        #pdfFileName {
+            color: var(--body-text);
+        }
+        #pdfFileName.font-semibold {
+            color: var(--optional-accent);
         }
         
         #horizontalNavContainer {
@@ -209,12 +209,10 @@
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--border-color);
         }
-       
         #horizontalNavContainer::-webkit-scrollbar { height: 4px; }
         #horizontalNavContainer::-webkit-scrollbar-track { background: transparent; }
-        #horizontalNavContainer::-webkit-scrollbar-thumb { background: #E6E9F0; border-radius: 10px; }
-        #horizontalNavContainer::-webkit-scrollbar-thumb:hover { background: #F7971E; }
-
+        #horizontalNavContainer::-webkit-scrollbar-thumb { background: #e8e3dc; border-radius: 10px; }
+        #horizontalNavContainer::-webkit-scrollbar-thumb:hover { background: #d4af37; }
         #questionNavGrid {
             display: flex;
             gap: 0.75rem;
@@ -228,7 +226,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: #FFFFFF;
+            background: var(--card-color);
             border: 1px solid var(--border-color);
             cursor: pointer;
             font-weight: 600;
@@ -236,10 +234,9 @@
         }
         .nav-item:hover {
             transform: scale(1.1);
-            border-color: #F7971E;
         }
         .nav-item.attempted {
-            background: var(--success-color);
+            background-color: var(--success-color);
             color: white;
             border-color: var(--success-color);
         }
@@ -249,8 +246,8 @@
             border-color: var(--skip-color);
         }
         .nav-item.current {
-            box-shadow: 0 0 0 3px #FFD200;
-            border-color: #F7971E;
+            box-shadow: 0 0 0 3px var(--primary-accent);
+            border-color: var(--primary-accent);
         }
         #categoryFilters {
             display: flex;
@@ -259,10 +256,10 @@
             margin-bottom: 2rem;
         }
         .category-btn {
-            background: #FFFFFF;
+            background: #fff;
             border: 1px solid var(--border-color);
             color: var(--body-text);
-            padding: 0.5rem 1.25rem;
+            padding: 0.5rem 1rem;
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -270,21 +267,31 @@
             font-weight: 500;
         }
         .category-btn:hover {
-            background-color: white;
-            border-color: var(--body-text);
+            background-color: #f0ebe4;
         }
         .category-btn.active {
-            background: var(--accent-gradient);
-            color: #0D1B2A;
-            border-color: transparent;
+            background: var(--primary-accent);
+            color: white;
+            border-color: var(--primary-accent);
             font-weight: 600;
         }
-        footer {
-            background: var(--footer-gradient);
-            color: #E6E9F0;
-            padding: 2rem;
-            border-radius: 1rem;
-            margin-top: 2rem;
+
+        /* Modal Styles */
+        #goalModal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(13, 27, 42, 0.5);
+            display: none; /* Changed from flex to none */
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+        #goalModal .card {
+             width: 100%;
+             max-width: 600px;
         }
     </style>
 </head>
@@ -295,36 +302,15 @@
         <div id="setupScreen" class="card space-y-12 max-w-4xl mx-auto">
             <div class="text-center">
                  <div class="flex justify-center items-center gap-4">
-                     <div class="p-3 rounded-full" style="background: var(--accent-gradient)">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D1B2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#D4AF37]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                     </div>
-                    <h1 class="text-5xl font-bold">AI MCQ Practice Center</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#D4AF37]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    <h1 class="text-4xl font-bold">AI MCQ Practice Center</h1>
                 </div>
-                <p class="text-xl mt-4 max-w-2xl mx-auto">The premium way to prepare. Generate, practice, and analyze with an elegant, AI-powered experience.</p>
-            </div>
-
-            <!-- Goal Setting -->
-            <div class="border-t border-[#E8E3DC] pt-8">
-                <h2 class="text-3xl font-semibold mb-6 text-center">1. Set Your Goal & Time Limit</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                        <label for="goalCorrect" class="block text-sm font-medium mb-2">Correct Answers Target</label>
-                        <input type="number" id="goalCorrect" class="input-field" placeholder="e.g., 18">
-                    </div>
-                    <div>
-                        <label for="goalTotal" class="block text-sm font-medium mb-2">Total Questions in Goal</label>
-                        <input type="number" id="goalTotal" class="input-field" placeholder="e.g., 20">
-                    </div>
-                     <div>
-                        <label for="timeLimit" class="block text-sm font-medium mb-2">Time Limit (minutes)</label>
-                        <input type="number" id="timeLimit" class="input-field" placeholder="e.g., 30">
-                    </div>
-                </div>
+                <p class="text-lg mt-3">Craft your personalized practice sessions with unparalleled elegance.</p>
             </div>
 
             <!-- Question Input -->
             <div class="border-t border-[#E8E3DC] pt-8">
-                <h2 class="text-3xl font-semibold mb-6 text-center">2. Create Your Question Bank</h2>
+                <h2 class="text-2xl font-semibold mb-6 text-center">Curate Your Questions</h2>
                 <div class="flex flex-wrap space-x-2 tab-btn-container p-1 rounded-lg mb-6">
                     <button id="generateTab" class="tab-btn flex-1 text-center active" onclick="switchTab('generate')">Generate from Text</button>
                     <button id="pdfTab" class="tab-btn flex-1 text-center" onclick="switchTab('pdf')">Upload PDF</button>
@@ -379,7 +365,7 @@
 
                 <!-- PDF Upload Form -->
                 <div id="pdfInput" class="hidden space-y-6">
-                    <label for="pdfFile" class="block w-full cursor-pointer border-2 border-dashed border-[#E8E3DC] rounded-lg p-10 text-center hover:border-[#F7971E] transition-all">
+                    <label for="pdfFile" class="block w-full cursor-pointer border-2 border-dashed border-[#E8E3DC] rounded-lg p-10 text-center hover:border-[#D4AF37] transition-all">
                         <span id="pdfFileName">Click to choose a PDF</span>
                         <input type="file" id="pdfFile" class="hidden" accept="application/pdf" onchange="displayPdfName()">
                     </label>
@@ -404,7 +390,7 @@
 
             <!-- Question List and Start Button -->
             <div class="border-t border-[#E8E3DC] pt-8">
-                <h3 class="text-3xl font-semibold text-center mb-4">Question Bank (<span id="questionCount">0</span>)</h3>
+                <h3 class="text-2xl font-semibold text-center mb-4">Question Bank (<span id="questionCount">0</span>)</h3>
                 <ul id="questionList" class="list-disc list-inside mt-2 max-h-40 overflow-y-auto"></ul>
                 
                 <div id="resumeContainer" class="hidden mt-6 p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-lg text-center">
@@ -412,7 +398,7 @@
                     <button class="btn btn-secondary mt-2 w-full" onclick="resumeQuiz()">Resume from where you left off</button>
                 </div>
 
-                <button id="startQuizBtn" class="btn btn-primary w-full mt-6" onclick="startQuiz()" disabled>Start a New Quiz</button>
+                <button id="startQuizBtn" class="btn btn-primary w-full mt-6" onclick="showGoalModal()" disabled>Start a New Quiz</button>
             </div>
         </div>
 
@@ -425,7 +411,7 @@
                 <div class="flex justify-between items-center mb-6 text-lg">
                     <div class="font-bold text-xl">Question <span id="currentQuestionNumber"></span>/<span id="totalQuizQuestions"></span></div>
                     <div id="mainTimerDisplay" class="font-mono bg-red-100 text-red-800 px-4 py-2 rounded-lg hidden">Time Left: <span id="quizTimeRemaining"></span></div>
-                    <div class="font-mono bg-[#E6E9F0] text-[#414345] px-4 py-2 rounded-lg">Time on Q: <span id="questionTimer">0.0</span>s</div>
+                    <div class="font-mono bg-[#FAF7F2] text-[#3E4C59] px-4 py-2 rounded-lg">Time on Q: <span id="questionTimer">0.0</span>s</div>
                 </div>
                 <div id="categoryFilters"></div>
                 <div id="quizQuestion" class="text-2xl mb-8 leading-relaxed"></div>
@@ -444,10 +430,10 @@
             <div class="text-center"><h1 class="text-4xl font-bold">Quiz Results</h1></div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Your Score</div><div id="finalScore" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Accuracy</div><div id="accuracy" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Avg. Speed</div><div id="avgSpeed" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Total Time</div><div id="totalTime" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Your Score</div><div id="finalScore" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Accuracy</div><div id="accuracy" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Avg. Speed</div><div id="avgSpeed" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Total Time</div><div id="totalTime" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
             </div>
 
             <div id="goalAnalysis" class="goal-analysis-box"><h3 class="text-2xl font-semibold mb-3">Goal Analysis</h3><p id="goalAnalysisText" class="text-lg"></p></div>
@@ -482,6 +468,31 @@
         </div>
     </div>
     
+    <!-- Goal Setting Modal -->
+    <div id="goalModal" class="hidden" onclick="hideGoalModal(event)">
+        <div class="card w-full max-w-2xl space-y-8" onclick="event.stopPropagation()">
+            <h2 class="text-3xl font-semibold text-center">Set Your Goals</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label for="goalCorrectModal" class="block text-sm font-medium mb-2">Correct Answers Target</label>
+                    <input type="number" id="goalCorrectModal" class="input-field" placeholder="e.g., 18">
+                </div>
+                <div>
+                    <label for="goalTotalModal" class="block text-sm font-medium mb-2">Total Questions in Goal</label>
+                    <input type="number" id="goalTotalModal" class="input-field" placeholder="e.g., 20">
+                </div>
+                 <div>
+                    <label for="timeLimitModal" class="block text-sm font-medium mb-2">Time Limit (minutes)</label>
+                    <input type="number" id="timeLimitModal" class="input-field" placeholder="e.g., 30">
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4 pt-4">
+                <button class="btn btn-secondary w-full" onclick="startQuiz(true)">Skip & Start</button>
+                <button class="btn btn-primary w-full" onclick="startQuiz(false)">Start Quiz</button>
+            </div>
+        </div>
+    </div>
+
     <footer class="text-center py-6 mt-6 w-full max-w-5xl mx-auto">
         <p id="copyright-notice" class="text-sm"></p>
     </footer>
@@ -714,17 +725,44 @@
                 const systemPrompt = `You are an expert quiz creator. Format the output STRICTLY as follows, with each question separated by a blank line:\n\n1. Question text?\nA) Option A\nB) Option B\nC) Option C\nD) Option D\nCorrect: C`;
                 const payload = { contents: [{ parts: [{ text: userPrompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
 
-                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                
-                if (!response.ok) {
-                    let errorDetails = `API Error: Status ${response.status}`;
+                let response;
+                let attempts = 0;
+                const maxRetries = 3;
+                let delay = 1000;
+
+                while(attempts < maxRetries) {
                     try {
-                        const errorData = await response.json();
-                        errorDetails = errorData.error?.message || JSON.stringify(errorData);
-                    } catch (e) {
-                        errorDetails += ` - ${await response.text()}`;
+                        response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                        if (response.ok) break;
+                        
+                        if (response.status >= 500) { // Server error, so we should retry
+                             console.log(`Attempt ${attempts + 1} failed with server error ${response.status}. Retrying in ${delay / 1000}s...`);
+                             await new Promise(res => setTimeout(res, delay));
+                             delay *= 2;
+                             attempts++;
+                             continue;
+                        }
+
+                        // For other errors (e.g., 4xx), we fail immediately
+                        let errorDetails = `API Error: Status ${response.status}`;
+                        try {
+                            const errorData = await response.json();
+                            errorDetails = errorData.error?.message || JSON.stringify(errorData);
+                        } catch (e) {
+                            errorDetails += ` - ${await response.text()}`;
+                        }
+                        throw new Error(errorDetails);
+
+                    } catch(error) { // Network errors
+                        console.log(`Attempt ${attempts + 1} failed with network error. Retrying in ${delay / 1000}s...`);
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                        attempts++;
                     }
-                    throw new Error(errorDetails);
+                }
+
+                if (!response || !response.ok) {
+                    throw new Error("The service is currently unavailable. Please try again later.");
                 }
 
                 const result = await response.json();
@@ -746,14 +784,37 @@
                 generateBtn.disabled = false;
             }
         }
+        
+        // --- GOAL MODAL LOGIC ---
+        function showGoalModal() {
+            if (questions.length === 0) {
+                showMessage('Please add questions before starting.', true);
+                return;
+            }
+            document.getElementById('goalModal').style.display = 'flex';
+        }
+
+        function hideGoalModal(event) {
+            if (event.target.id === 'goalModal') {
+                 document.getElementById('goalModal').style.display = 'none';
+            }
+        }
 
         // --- QUIZ LOGIC ---
-        function startQuiz() {
+        function startQuiz(skipped = false) {
+            document.getElementById('goalModal').style.display = 'none';
+
             clearSavedProgress();
-            const goalCorrect = parseInt(document.getElementById('goalCorrect').value);
-            const goalTotal = parseInt(document.getElementById('goalTotal').value);
-            const timeLimitMinutes = parseInt(document.getElementById('timeLimit').value);
-            if (questions.length === 0) { showMessage('Please add questions before starting.', true); return; }
+
+            if (skipped) {
+                document.getElementById('goalCorrectModal').value = '';
+                document.getElementById('goalTotalModal').value = '';
+                document.getElementById('timeLimitModal').value = '';
+            }
+
+            const goalCorrect = parseInt(document.getElementById('goalCorrectModal').value);
+            const goalTotal = parseInt(document.getElementById('goalTotalModal').value);
+            const timeLimitMinutes = parseInt(document.getElementById('timeLimitModal').value);
             
             goal = (!isNaN(goalCorrect) && !isNaN(goalTotal) && goalCorrect > 0 && goalTotal > 0) ? { correct: goalCorrect, total: goalTotal } : { correct: 0, total: 0 };
             
@@ -1161,9 +1222,9 @@
             document.getElementById('setupScreen').classList.remove('hidden');
             document.getElementById('quizScreen').classList.add('hidden');
             document.getElementById('resultsScreen').classList.add('hidden');
-            document.getElementById('goalCorrect').value = '';
-            document.getElementById('goalTotal').value = '';
-            document.getElementById('timeLimit').value = '';
+            document.getElementById('goalCorrectModal').value = '';
+            document.getElementById('goalTotalModal').value = '';
+            document.getElementById('timeLimitModal').value = '';
             document.getElementById('pdfFile').value = '';
             document.getElementById('reviewMistakesContainer').classList.add('hidden');
             document.getElementById('incorrectQuestionsList').innerHTML = '';
