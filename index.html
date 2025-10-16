@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- MathJax for beautiful math rendering -->
@@ -24,23 +24,25 @@
     </script>
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <style>
-        /* ROYAL & PREMIUM DESIGN PALETTE */
+        /* APPLE-INSPIRED PREMIUM DESIGN PALETTE */
         :root {
-            --bg-color: #FAF7F2;
-            --card-color: #FFFFFF;
-            --primary-accent: #D4AF37;
-            --secondary-accent: #B88917;
-            --heading-text: #0D1B2A;
-            --body-text: #3E4C59;
-            --border-color: #E8E3DC;
-            --optional-accent: #5A2A27;
+            --bg-gradient: linear-gradient(120deg, #E6E9F0, #EEF1F5); /* Platinum Glow */
+            --footer-gradient: linear-gradient(to right, #232526, #414345); /* Mystic Noir */
+            --accent-gradient: linear-gradient(to right, #F7971E, #FFD200); /* Luxury Gold Accent */
+            --highlight-gradient: linear-gradient(to right, #A1C4FD, #C2E9FB); /* Serene Blue Mist */
+            
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --heading-text: #232526;
+            --body-text: #414345;
+            --border-color: rgba(0, 0, 0, 0.07);
+
             --success-color: #28a745;
-            --skip-color: #dc3545;
+            --error-color: #dc3545;
         }
 
         body {
-            font-family: 'Poppins', 'Inter', sans-serif;
-            background: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
             color: var(--body-text);
         }
 
@@ -54,133 +56,141 @@
         }
 
         .card {
-            background: var(--card-color);
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px -15px rgba(13, 27, 42, 0.1);
-            padding: 3rem;
-            animation: fadeIn 0.5s ease-in-out;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.1);
+            padding: 3.5rem;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            animation: fadeIn 0.6s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .btn {
-            padding: 0.85rem 1.75rem;
-            border-radius: 0.5rem;
+            padding: 0.8rem 1.75rem;
+            border-radius: 0.75rem;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.25s ease-out;
             letter-spacing: 0.5px;
+            border: none;
         }
 
         .btn-primary {
-            background-color: var(--primary-accent);
-            color: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            background: var(--accent-gradient);
+            color: #0D1B2A;
+            box-shadow: 0 5px 20px -5px rgba(247, 151, 30, 0.4);
             transform: translateY(0);
         }
 
         .btn-primary:hover {
-            background-color: var(--secondary-accent);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 210, 0, 0.6);
+            transform: translateY(-3px) scale(1.03);
         }
 
          .btn-primary:disabled {
-            background: #e4d5a1;
-            color: #fff;
+            background: #EAEAEA;
+            color: #A0A0A0;
             cursor: not-allowed;
             transform: translateY(0);
             box-shadow: none;
         }
 
         .btn-secondary {
-            background-color: var(--card-color);
+            background-color: rgba(255, 255, 255, 0.7);
             color: var(--heading-text);
             border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background-color: #FAF7F2;
-            border-color: #D4AF37;
+            background-color: #FFFFFF;
+            border-color: var(--heading-text);
         }
 
         .input-field {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1.15rem;
             border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             transition: all 0.2s ease-in-out;
-            background-color: var(--card-color);
+            background-color: rgba(255, 255, 255, 0.8);
             color: var(--body-text);
+            font-size: 1rem;
         }
 
         .input-field:focus {
             outline: none;
-            border-color: var(--primary-accent);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            border-color: #F7971E;
+            box-shadow: 0 0 0 4px rgba(247, 151, 30, 0.15);
         }
 
         .tab-btn-container {
-             background-color: #E8E3DC;
-             padding: 0.25rem;
+             background-color: #E6E9F0;
+             padding: 0.35rem;
+             border-radius: 0.75rem;
         }
 
         .tab-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 0.5rem;
             cursor: pointer;
             font-weight: 500;
             color: var(--body-text);
-            border: 2px solid transparent;
+            border: none;
+            background: transparent;
         }
 
         .tab-btn.active {
-            background-color: var(--primary-accent);
-            color: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: var(--accent-gradient);
+            color: #0D1B2A;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
         .option {
             transition: all 0.2s ease-in-out;
             border: 1px solid var(--border-color);
-            background-color: var(--card-color);
+            background-color: #FFFFFF;
             border-radius: 0.75rem;
         }
         
         .option:hover {
-            border-color: var(--primary-accent);
+            border-color: #FFD200;
             transform: translateY(-2px);
         }
 
         .option.selected {
             background-color: #fffaf0;
-            border-color: var(--primary-accent);
+            border-color: #F7971E;
             transform: scale(1.02);
-            box-shadow: 0 4px 15px -2px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 20px -5px rgba(247, 151, 30, 0.3);
         }
+        
+        .option.correct { background-color: #e9f7ec; border-color: var(--success-color); }
+        .option.incorrect { background-color: #fbe9e9; border-color: var(--error-color); }
+        .option.correct-answer { border-color: #F7971E; box-shadow: 0 0 0 2px #FFD200; }
 
         .result-box {
-            background: var(--card-color);
+            background: #FFFFFF;
             border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
+            border-radius: 1rem;
         }
 
         .goal-analysis-box {
-            border-radius: 0.75rem;
+            border-radius: 1rem;
             padding: 1.5rem;
         }
 
         .loader {
             width: 24px;
             height: 24px;
-            border: 3px solid rgba(255, 255, 255, 0.8);
+            border: 3px solid rgba(0, 0, 0, 0.6);
             border-bottom-color: transparent;
             border-radius: 50%;
             display: inline-block;
@@ -193,14 +203,8 @@
             100% { transform: rotate(360deg); }
         }
 
-        label {
-            color: var(--heading-text);
-        }
-        #pdfFileName {
-            color: var(--body-text);
-        }
         #pdfFileName.font-semibold {
-            color: var(--optional-accent);
+            color: var(--heading-text);
         }
         
         #horizontalNavContainer {
@@ -209,10 +213,12 @@
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--border-color);
         }
+       
         #horizontalNavContainer::-webkit-scrollbar { height: 4px; }
         #horizontalNavContainer::-webkit-scrollbar-track { background: transparent; }
-        #horizontalNavContainer::-webkit-scrollbar-thumb { background: #e8e3dc; border-radius: 10px; }
-        #horizontalNavContainer::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+        #horizontalNavContainer::-webkit-scrollbar-thumb { background: #E6E9F0; border-radius: 10px; }
+        #horizontalNavContainer::-webkit-scrollbar-thumb:hover { background: #F7971E; }
+
         #questionNavGrid {
             display: flex;
             gap: 0.75rem;
@@ -226,7 +232,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: var(--card-color);
+            background: #FFFFFF;
             border: 1px solid var(--border-color);
             cursor: pointer;
             font-weight: 600;
@@ -234,20 +240,21 @@
         }
         .nav-item:hover {
             transform: scale(1.1);
+            border-color: #F7971E;
         }
         .nav-item.attempted {
-            background-color: var(--success-color);
+            background: var(--success-color);
             color: white;
             border-color: var(--success-color);
         }
         .nav-item.skipped {
-            background-color: var(--skip-color);
+            background-color: var(--error-color);
             color: white;
-            border-color: var(--skip-color);
+            border-color: var(--error-color);
         }
         .nav-item.current {
-            box-shadow: 0 0 0 3px var(--primary-accent);
-            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px #FFD200;
+            border-color: #F7971E;
         }
         #categoryFilters {
             display: flex;
@@ -256,10 +263,10 @@
             margin-bottom: 2rem;
         }
         .category-btn {
-            background: #fff;
+            background: #FFFFFF;
             border: 1px solid var(--border-color);
             color: var(--body-text);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.25rem;
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -267,21 +274,55 @@
             font-weight: 500;
         }
         .category-btn:hover {
-            background-color: #f0ebe4;
+            background-color: white;
+            border-color: var(--body-text);
         }
         .category-btn.active {
-            background: var(--primary-accent);
-            color: white;
-            border-color: var(--primary-accent);
+            background: var(--accent-gradient);
+            color: #0D1B2A;
+            border-color: transparent;
             font-weight: 600;
         }
+        
+        .difficulty-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .difficulty-easy { background: #e9f7ec; color: #1a7e63; }
+        .difficulty-medium { background: #fffbeb; color: #b45309; }
+        .difficulty-hard { background: #fbe9e9; color: #c53030; }
 
+        #explanationBox {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #F9FAFC;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            animation: fadeIn 0.4s ease;
+        }
+        #explanationBox h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--footer-gradient);
+            color: #E6E9F0;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+        }
+        
         /* Modal Styles */
         #goalModal {
             position: fixed;
             inset: 0;
             background-color: rgba(13, 27, 42, 0.5);
-            display: none; /* Changed from flex to none */
+            display: none;
             align-items: center;
             justify-content: center;
             z-index: 50;
@@ -293,6 +334,55 @@
              width: 100%;
              max-width: 600px;
         }
+        
+        /* Practice Mode Toggle Switch */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #E6E9F0;
+            padding: 1rem;
+            border-radius: 0.75rem;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-image: var(--accent-gradient);
+        }
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
@@ -302,15 +392,17 @@
         <div id="setupScreen" class="card space-y-12 max-w-4xl mx-auto">
             <div class="text-center">
                  <div class="flex justify-center items-center gap-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#D4AF37]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                    <h1 class="text-4xl font-bold">AI MCQ Practice Center</h1>
+                     <div class="p-3 rounded-full" style="background: var(--accent-gradient)">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D1B2A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#D4AF37]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                     </div>
+                    <h1 class="text-5xl font-bold">AI MCQ Practice Center</h1>
                 </div>
-                <p class="text-lg mt-3">Craft your personalized practice sessions with unparalleled elegance.</p>
+                <p class="text-xl mt-4 max-w-2xl mx-auto">The premium way to prepare. Generate, practice, and analyze with an elegant, AI-powered experience.</p>
             </div>
 
             <!-- Question Input -->
-            <div class="border-t border-[#E8E3DC] pt-8">
-                <h2 class="text-2xl font-semibold mb-6 text-center">Curate Your Questions</h2>
+            <div class="border-t border-[#EFEBE4] pt-8">
+                <h2 class="text-3xl font-semibold mb-6 text-center">Create Your Question Bank</h2>
                 <div class="flex flex-wrap space-x-2 tab-btn-container p-1 rounded-lg mb-6">
                     <button id="generateTab" class="tab-btn flex-1 text-center active" onclick="switchTab('generate')">Generate from Text</button>
                     <button id="pdfTab" class="tab-btn flex-1 text-center" onclick="switchTab('pdf')">Upload PDF</button>
@@ -365,7 +457,7 @@
 
                 <!-- PDF Upload Form -->
                 <div id="pdfInput" class="hidden space-y-6">
-                    <label for="pdfFile" class="block w-full cursor-pointer border-2 border-dashed border-[#E8E3DC] rounded-lg p-10 text-center hover:border-[#D4AF37] transition-all">
+                    <label for="pdfFile" class="block w-full cursor-pointer border-2 border-dashed border-[#EFEBE4] rounded-lg p-10 text-center hover:border-[#F7971E] transition-all">
                         <span id="pdfFileName">Click to choose a PDF</span>
                         <input type="file" id="pdfFile" class="hidden" accept="application/pdf" onchange="displayPdfName()">
                     </label>
@@ -379,7 +471,7 @@
                             <input type="number" id="endPage" class="input-field w-28" placeholder="Last">
                         </div>
                     </div>
-                    <div class="text-xs p-3 bg-white/50 rounded-lg border border-[#E8E3DC]">
+                    <div class="text-xs p-3 bg-white/50 rounded-lg border border-[#EFEBE4]">
                        <p class="font-semibold">Upload any text-based PDF to extract its content for AI question generation.</p>
                     </div>
                     <button id="parsePdfBtn" class="btn btn-secondary w-full" onclick="handlePdfUpload()" disabled>Extract Text for AI</button>
@@ -389,8 +481,8 @@
             </div>
 
             <!-- Question List and Start Button -->
-            <div class="border-t border-[#E8E3DC] pt-8">
-                <h3 class="text-2xl font-semibold text-center mb-4">Question Bank (<span id="questionCount">0</span>)</h3>
+            <div class="border-t border-[#EFEBE4] pt-8">
+                <h3 class="text-3xl font-semibold text-center mb-4">Question Bank (<span id="questionCount">0</span>)</h3>
                 <ul id="questionList" class="list-disc list-inside mt-2 max-h-40 overflow-y-auto"></ul>
                 
                 <div id="resumeContainer" class="hidden mt-6 p-4 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-lg text-center">
@@ -409,13 +501,16 @@
             </div>
             <div id="quizMainContent">
                 <div class="flex justify-between items-center mb-6 text-lg">
-                    <div class="font-bold text-xl">Question <span id="currentQuestionNumber"></span>/<span id="totalQuizQuestions"></span></div>
+                    <div class="font-bold text-xl flex items-center gap-4">Question <span id="currentQuestionNumber"></span>/<span id="totalQuizQuestions"></span>
+                        <span id="difficultyTagContainer"></span>
+                    </div>
                     <div id="mainTimerDisplay" class="font-mono bg-red-100 text-red-800 px-4 py-2 rounded-lg hidden">Time Left: <span id="quizTimeRemaining"></span></div>
-                    <div class="font-mono bg-[#FAF7F2] text-[#3E4C59] px-4 py-2 rounded-lg">Time on Q: <span id="questionTimer">0.0</span>s</div>
+                    <div id="questionTimerDisplay" class="font-mono bg-[#E6E9F0] text-[#414345] px-4 py-2 rounded-lg">Time on Q: <span id="questionTimer">0.0</span>s</div>
                 </div>
                 <div id="categoryFilters"></div>
                 <div id="quizQuestion" class="text-2xl mb-8 leading-relaxed"></div>
                 <div id="quizOptions" class="space-y-4"></div>
+                <div id="explanationContainer" class="mt-6"></div>
                 <div class="flex flex-col md:flex-row gap-4 mt-10">
                     <button id="prevQuestionBtn" class="btn btn-secondary w-full md:w-auto" onclick="prevQuestion()">Previous</button>
                     <div class="flex-grow"></div>
@@ -430,10 +525,10 @@
             <div class="text-center"><h1 class="text-4xl font-bold">Quiz Results</h1></div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Your Score</div><div id="finalScore" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Accuracy</div><div id="accuracy" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Avg. Speed</div><div id="avgSpeed" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
-                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Total Time</div><div id="totalTime" class="text-3xl font-bold text-[#D4AF37] mt-1"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Your Score</div><div id="finalScore" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Accuracy</div><div id="accuracy" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Avg. Speed</div><div id="avgSpeed" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
+                <div class="p-4 result-box"><div class="text-sm uppercase tracking-wider">Total Time</div><div id="totalTime" class="text-3xl font-bold mt-1" style="color: #F7971E"></div></div>
             </div>
 
             <div id="goalAnalysis" class="goal-analysis-box"><h3 class="text-2xl font-semibold mb-3">Goal Analysis</h3><p id="goalAnalysisText" class="text-lg"></p></div>
@@ -447,14 +542,14 @@
                     <h3 class="text-2xl font-semibold mb-4 text-center">Detailed Breakdown</h3>
                     <div class="max-h-96 overflow-y-auto space-y-2 pr-2">
                         <table class="w-full text-sm text-left">
-                            <thead class="text-xs uppercase bg-[#FAF7F2] sticky top-0"><tr class="text-[#0D1B2A]"><th scope="col" class="px-6 py-3">Q#</th><th scope="col" class="px-6 py-3">Result</th><th scope="col" class="px-6 py-3">Time</th></tr></thead>
+                            <thead class="text-xs uppercase bg-[#FAF7F2] sticky top-0"><tr class="text-[#0D1B2A]"><th scope="col" class="px-6 py-3">Q#</th><th scope="col" class="px-6 py-3">Result</th><th scope="col" class="px-6 py-3">Time</th><th scope="col" class="px-6 py-3">Difficulty</th></tr></thead>
                             <tbody id="resultsTableBody"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
             
-            <div id="reviewMistakesContainer" class="hidden border-t border-[#E8E3DC] pt-8">
+            <div id="reviewMistakesContainer" class="hidden border-t border-[#EFEBE4] pt-8">
                 <h3 class="text-2xl font-semibold mb-6 text-center">Review Your Mistakes</h3>
                 <div id="incorrectQuestionsList" class="space-y-6">
                     <!-- Incorrect questions will be dynamically inserted here -->
@@ -471,7 +566,7 @@
     <!-- Goal Setting Modal -->
     <div id="goalModal" class="hidden" onclick="hideGoalModal(event)">
         <div class="card w-full max-w-2xl space-y-8" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-semibold text-center">Set Your Goals</h2>
+            <h2 class="text-3xl font-semibold text-center">Set Goals & Practice Mode</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                     <label for="goalCorrectModal" class="block text-sm font-medium mb-2">Correct Answers Target</label>
@@ -485,6 +580,13 @@
                     <label for="timeLimitModal" class="block text-sm font-medium mb-2">Time Limit (minutes)</label>
                     <input type="number" id="timeLimitModal" class="input-field" placeholder="e.g., 30">
                 </div>
+            </div>
+            <div class="toggle-container">
+                <label for="practiceModeToggle" class="font-semibold text-lg">Practice Mode <span class="text-sm font-normal">(Instant Feedback)</span></label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="practiceModeToggle">
+                    <span class="slider"></span>
+                </label>
             </div>
             <div class="flex flex-col md:flex-row gap-4 pt-4">
                 <button class="btn btn-secondary w-full" onclick="startQuiz(true)">Skip & Start</button>
@@ -515,6 +617,7 @@
         let resultsChart;
         let quizMistakes = [];
         let isReattempting = false;
+        let isPracticeMode = false;
 
         // --- SETUP LOGIC ---
         function switchTab(tabName) {
@@ -594,7 +697,7 @@
             const options = { A: document.getElementById('manualOptionA').value.trim(), B: document.getElementById('manualOptionB').value.trim(), C: document.getElementById('manualOptionC').value.trim(), D: document.getElementById('manualOptionD').value.trim() };
             const correctAnswer = document.getElementById('manualCorrectAnswer').value;
             if (question && options.A && options.B && options.C && options.D) {
-                addAndCategorizeQuestions([{ question, options, correctAnswer }]);
+                addAndCategorizeQuestions([{ question, options, correctAnswer, difficulty: 'Medium' }]); // Default difficulty for manual
                 document.getElementById('manualQuestion').value = '';
                 document.getElementById('manualOptionA').value = '';
                 document.getElementById('manualOptionB').value = '';
@@ -607,12 +710,17 @@
 
         function parseAndAddQuestions(text, fromAI = false) {
             if (!text || text.trim() === '') { showMessage('The text is empty. Please check your source.', true); return 0; }
-            const questionRegex = /(?:\d+[\.\)]|\*\s)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*(?:Answer|Correct):\s*([A-D])/gi;
+            const questionRegex = /(?:\d+[\.\)]|\*\s)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*[A-Da-d]\)\s*(.*?)\s*\n\s*(?:Answer|Correct):\s*([A-D])\s*\n?\s*(?:Difficulty:\s*(Easy|Medium|Hard))?/gi;
             let match;
             let newQuestions = [];
             while ((match = questionRegex.exec(text.trim())) !== null) {
-                const [, question, optA, optB, optC, optD, correctAnswer] = match;
-                newQuestions.push({ question: question.trim(), options: { A: optA.trim(), B: optB.trim(), C: optC.trim(), D: optD.trim() }, correctAnswer: correctAnswer.trim().toUpperCase() });
+                const [, question, optA, optB, optC, optD, correctAnswer, difficulty] = match;
+                newQuestions.push({ 
+                    question: question.trim(), 
+                    options: { A: optA.trim(), B: optB.trim(), C: optC.trim(), D: optD.trim() }, 
+                    correctAnswer: correctAnswer.trim().toUpperCase(),
+                    difficulty: difficulty || 'Medium'
+                });
             }
             
             if (newQuestions.length > 0) {
@@ -631,7 +739,7 @@
         
         function updateQuestionList() {
             document.getElementById('questionCount').textContent = questions.length;
-            document.getElementById('questionList').innerHTML = questions.map((q, i) => `<li class="py-1">${i+1}. ${q.question.substring(0, 50)}... [${q.category || 'N/A'}]</li>`).join('');
+            document.getElementById('questionList').innerHTML = questions.map((q, i) => `<li class="py-1">${i+1}. ${q.question.substring(0, 40)}... [${q.category || 'N/A'} / ${q.difficulty}]</li>`).join('');
             document.getElementById('startQuizBtn').disabled = questions.length === 0;
         }
 
@@ -722,7 +830,7 @@
                 if (context) userPrompt += `\nBase the questions on the following context: "${context}".`;
                 if (style) userPrompt += `\nFollow these instructions for question style: "${style}".`;
                 if (examples) userPrompt += `\nGenerate new questions that are similar in format and difficulty to these examples:\n${examples}`;
-                const systemPrompt = `You are an expert quiz creator. Format the output STRICTLY as follows, with each question separated by a blank line:\n\n1. Question text?\nA) Option A\nB) Option B\nC) Option C\nD) Option D\nCorrect: C`;
+                const systemPrompt = `You are an expert quiz creator. Format the output STRICTLY as follows, with each question separated by a blank line:\n\n1. Question text?\nA) Option A\nB) Option B\nC) Option C\nD) Option D\nCorrect: C\nDifficulty: Easy`;
                 const payload = { contents: [{ parts: [{ text: userPrompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
 
                 let response;
@@ -735,7 +843,7 @@
                         response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                         if (response.ok) break;
                         
-                        if (response.status >= 500) { // Server error, so we should retry
+                        if (response.status >= 500) {
                              console.log(`Attempt ${attempts + 1} failed with server error ${response.status}. Retrying in ${delay / 1000}s...`);
                              await new Promise(res => setTimeout(res, delay));
                              delay *= 2;
@@ -743,7 +851,6 @@
                              continue;
                         }
 
-                        // For other errors (e.g., 4xx), we fail immediately
                         let errorDetails = `API Error: Status ${response.status}`;
                         try {
                             const errorData = await response.json();
@@ -753,7 +860,7 @@
                         }
                         throw new Error(errorDetails);
 
-                    } catch(error) { // Network errors
+                    } catch(error) {
                         console.log(`Attempt ${attempts + 1} failed with network error. Retrying in ${delay / 1000}s...`);
                         await new Promise(res => setTimeout(res, delay));
                         delay *= 2;
@@ -803,6 +910,7 @@
         // --- QUIZ LOGIC ---
         function startQuiz(skipped = false) {
             document.getElementById('goalModal').style.display = 'none';
+            isPracticeMode = document.getElementById('practiceModeToggle').checked;
 
             clearSavedProgress();
 
@@ -818,7 +926,7 @@
             
             goal = (!isNaN(goalCorrect) && !isNaN(goalTotal) && goalCorrect > 0 && goalTotal > 0) ? { correct: goalCorrect, total: goalTotal } : { correct: 0, total: 0 };
             
-            if (!isNaN(timeLimitMinutes) && timeLimitMinutes > 0) {
+            if (!isNaN(timeLimitMinutes) && timeLimitMinutes > 0 && !isPracticeMode) {
                 quizTimeLimitSeconds = timeLimitMinutes * 60;
                 startQuizTimer();
                 document.getElementById('mainTimerDisplay').classList.remove('hidden');
@@ -827,6 +935,13 @@
                  document.getElementById('mainTimerDisplay').classList.add('hidden');
             }
             
+            if (isPracticeMode) {
+                document.getElementById('mainTimerDisplay').classList.add('hidden');
+                document.getElementById('questionTimerDisplay').classList.add('hidden');
+            } else {
+                document.getElementById('questionTimerDisplay').classList.remove('hidden');
+            }
+
             document.getElementById('setupScreen').classList.add('hidden');
             document.getElementById('quizScreen').classList.remove('hidden');
             document.getElementById('horizontalNavContainer').classList.remove('hidden');
@@ -928,6 +1043,12 @@
                 window.MathJax.typesetPromise([quizQuestionEl]).catch((err) => console.log('MathJax typeset error:', err));
             }
             
+            const difficultyContainer = document.getElementById('difficultyTagContainer');
+            const difficulty = q.difficulty || 'Medium';
+            difficultyContainer.innerHTML = `<span class="difficulty-tag difficulty-${difficulty.toLowerCase()}">${difficulty}</span>`;
+
+            document.getElementById('explanationContainer').innerHTML = ''; // Clear previous explanation
+
             const optionsContainer = document.getElementById('quizOptions');
             optionsContainer.innerHTML = '';
             
@@ -939,6 +1060,7 @@
                 optionEl.textContent = `${key}: ${value}`;
                 optionEl.dataset.option = key;
                 optionEl.onclick = () => selectOption(key);
+                optionEl.style.pointerEvents = 'auto'; // Reset clickability
                 if (previousAnswer && previousAnswer.answer === key) {
                     optionEl.classList.add('selected');
                 }
@@ -954,21 +1076,83 @@
                 nextButton.textContent = "Next";
             }
             
-            startQuestionTimer();
+            if(!isPracticeMode) startQuestionTimer();
             updateNav();
         }
 
         function selectOption(optionKey) {
+             if (isPracticeMode && document.querySelector('.option.correct, .option.incorrect')) {
+                return; // Answer already locked in for this question
+            }
+            
             document.querySelectorAll('.option').forEach(el => {
                 el.classList.remove('selected');
                 if (el.dataset.option === optionKey) el.classList.add('selected');
             });
+
+            if(isPracticeMode) {
+                const q = currentQuizQuestions[currentQuestionIndex];
+                const correctAnswer = q.correctAnswer;
+                const allOptions = document.querySelectorAll('.option');
+                allOptions.forEach(el => el.style.pointerEvents = 'none'); // Disable all options
+
+                const selectedEl = document.querySelector(`.option[data-option="${optionKey}"]`);
+                if (optionKey === correctAnswer) {
+                    selectedEl.classList.add('correct');
+                } else {
+                    selectedEl.classList.add('incorrect');
+                    const correctEl = document.querySelector(`.option[data-option="${correctAnswer}"]`);
+                    if(correctEl) correctEl.classList.add('correct-answer');
+                }
+
+                const explanationContainer = document.getElementById('explanationContainer');
+                explanationContainer.innerHTML = `<button id="explainBtn" class="btn btn-secondary w-full mt-4" onclick="getExplanation()">Show Explanation</button>`;
+            }
+
             document.getElementById('nextQuestionBtn').disabled = false;
         }
         
+        async function getExplanation() {
+            const explainBtn = document.getElementById('explainBtn');
+            if(explainBtn) {
+                explainBtn.innerHTML = `<span class="loader" style="border-color: #3E4C59; border-bottom-color: transparent;"></span> Generating...`;
+                explainBtn.disabled = true;
+            }
+
+            const q = currentQuizQuestions[currentQuestionIndex];
+            const prompt = `Explain why the correct answer for the following multiple-choice question is "${q.correctAnswer}". Also, briefly explain why the other options are incorrect.\n\nQuestion: ${q.question}\nOptions:\nA) ${q.options.A}\nB) ${q.options.B}\nC) ${q.options.C}\nD) ${q.options.D}\nCorrect Answer: ${q.correctAnswer}`;
+
+            try {
+                const apiKey = "AIzaSyBmCdq0-NrCTSPi8hcPlLhRptXsI4OjiTY"; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+
+                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!response.ok) throw new Error("Failed to fetch explanation.");
+
+                const result = await response.json();
+                const explanationText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (explanationText) {
+                    document.getElementById('explanationContainer').innerHTML = `
+                        <div id="explanationBox">
+                            <h4>Explanation</h4>
+                            <p>${explanationText.replace(/\n/g, '<br>')}</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error("Empty explanation response from AI.");
+                }
+            } catch (error) {
+                console.error("Explanation Error:", error);
+                document.getElementById('explanationContainer').innerHTML = `<p class="text-red-500 mt-4">Could not load explanation. Please try again.</p>`;
+            }
+        }
+        
         function processAnswer(answerValue) {
-            stopQuestionTimer();
-            const timeTaken = parseFloat(document.getElementById('questionTimer').textContent);
+            if(!isPracticeMode) stopQuestionTimer();
+
+            const timeTaken = isPracticeMode ? 0 : parseFloat(document.getElementById('questionTimer').textContent);
             
             const q = currentQuizQuestions[currentQuestionIndex];
             const originalIndex = questions.indexOf(q);
@@ -1106,7 +1290,7 @@
                 let analysisMsg = `Your goal was ${goal.correct}/${goal.total} (${goalAccuracy.toFixed(1)}%). Your accuracy was ${accuracy.toFixed(1)}%.`;
                 if(accuracy >= goalAccuracy) {
                     analysisMsg += " Congratulations, you've met your goal!";
-                    goalAnalysisEl.className = 'goal-analysis-box bg-[#47C6B3]/20 text-[#0c4b41]';
+                    goalAnalysisEl.className = 'goal-analysis-box bg-[#D4AF37]/10 text-[#B88917]';
                 } else {
                     const difference = goal.correct - Math.round(correctCount * (goal.total/questions.length));
                     analysisMsg += ` You are about ${difference > 0 ? difference : 1} correct answer(s) short of your scaled goal. Keep practicing!`;
@@ -1114,7 +1298,7 @@
                 }
                 goalAnalysisTextEl.textContent = analysisMsg;
             } else {
-                 goalAnalysisEl.className = 'goal-analysis-box bg-[#F1F6FA] text-[#1E2A38]';
+                 goalAnalysisEl.className = 'goal-analysis-box bg-[#FAF7F2] text-[#3E4C59]';
                  goalAnalysisTextEl.textContent = "You didn't set a goal. Set one next time to track progress!";
             }
 
@@ -1131,9 +1315,9 @@
                     resultHtml = `<span class="px-2 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">Skipped</span>`;
                 } else {
                     const isCorrect = question.correctAnswer === ans.answer;
-                    resultHtml = `<span class="px-2 py-1 rounded-full text-xs font-semibold ${isCorrect ? 'bg-[#47C6B3]/20 text-[#0c4b41]' : 'bg-red-100 text-red-800'}">${isCorrect ? 'Correct' : `Incorrect (Ans: ${question.correctAnswer}, You: ${ans.answer})`}</span>`;
+                    resultHtml = `<span class="px-2 py-1 rounded-full text-xs font-semibold ${isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${isCorrect ? 'Correct' : `Incorrect (Ans: ${question.correctAnswer}, You: ${ans.answer})`}</span>`;
                 }
-                tableBody.innerHTML += `<tr class="border-b border-[#E4E8EC]"><td class="px-6 py-4 font-medium text-[#1E2A38]">${index + 1}</td><td class="px-6 py-4">${resultHtml}</td><td class="px-6 py-4">${timeText}</td></tr>`;
+                tableBody.innerHTML += `<tr class="border-b border-[#EFEBE4]"><td class="px-6 py-4 font-medium text-[#0D1B2A]">${index + 1}</td><td class="px-6 py-4">${resultHtml}</td><td class="px-6 py-4">${timeText}</td><td class="px-6 py-4">${question.difficulty}</td></tr>`;
             });
             
             const reviewContainer = document.getElementById('reviewMistakesContainer');
@@ -1161,9 +1345,9 @@
                     optionsList.className = 'space-y-2';
 
                     Object.entries(q.options).forEach(([key, value]) => {
-                        let styleClass = 'bg-white border-[#E4E8EC]';
+                        let styleClass = 'bg-white border-[#EFEBE4]';
                         if (key === item.userAnswer) styleClass = 'bg-red-200/80 border-red-400 text-red-800 font-semibold';
-                        if (key === q.correctAnswer) styleClass = 'bg-[#47C6B3]/30 border-[#47C6B3]/80 text-[#0c4b41] font-semibold';
+                        if (key === q.correctAnswer) styleClass = 'bg-green-200/80 border-green-400 text-green-800 font-semibold';
                         optionsList.innerHTML += `<li class="p-3 rounded-md border ${styleClass}">${key}: ${value}</li>`;
                     });
 
@@ -1193,8 +1377,8 @@
                 const goalData = [goalAccuracy, 75, 100];
                 datasets.push({ label: 'Your Goal', data: goalData, backgroundColor: 'rgba(212, 175, 55, 0.1)', borderColor: 'rgba(212, 175, 55, 0.5)', pointBackgroundColor: 'rgba(212, 175, 55, 0.5)' });
             }
-            datasets.unshift({ label: 'Your Performance', data: yourData, backgroundColor: 'rgba(71, 198, 179, 0.2)', borderColor: 'rgba(71, 198, 179, 1)', pointBackgroundColor: 'rgba(71, 198, 179, 1)' });
-            resultsChart = new Chart(ctx, { type: 'radar', data: { labels: labels, datasets: datasets }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { angleLines: { color: '#E4E8EC' }, grid: { color: '#E4E8EC' }, pointLabels: { font: { size: 12, weight: '500' }, color: '#0D1B2A' }, ticks: { backdropColor: '#FFFFFF', color: '#3E4C59', stepSize: 25 }, min: 0, max: 100 } }, plugins: { legend: { position: 'top', labels: { color: '#0D1B2A' } } } } });
+            datasets.unshift({ label: 'Your Performance', data: yourData, backgroundColor: 'rgba(40, 167, 69, 0.2)', borderColor: 'rgba(40, 167, 69, 1)', pointBackgroundColor: 'rgba(40, 167, 69, 1)' });
+            resultsChart = new Chart(ctx, { type: 'radar', data: { labels: labels, datasets: datasets }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { angleLines: { color: '#EFEBE4' }, grid: { color: '#EFEBE4' }, pointLabels: { font: { size: 12, weight: '500' }, color: '#0D1B2A' }, ticks: { backdropColor: '#FFFFFF', color: '#3E4C59', stepSize: 25 }, min: 0, max: 100 } }, plugins: { legend: { position: 'top', labels: { color: '#0D1B2A' } } } } });
         }
 
         function startMistakesQuiz() {
